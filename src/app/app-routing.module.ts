@@ -6,6 +6,9 @@ import {EvaluationComponent} from './evaluation/evaluation.component'
 import { ListeProfesseurComponent } from './liste-professeur/liste-professeur.component';
 import { DetailsProfesseursComponent } from './details-professeurs/details-professeurs.component';
 
+
+
+
 const routes: Routes = [
   {path: 'dashboard', component:DashboardAdminComponent},
   {path: 'auth', component:AuthComponent},
@@ -13,6 +16,7 @@ const routes: Routes = [
   {path:'liste-professeur', component:ListeProfesseurComponent},
   {path:'detail-professeur', component:DetailsProfesseursComponent},
   {path: '', redirectTo:'auth', pathMatch:'full'},
+  
 ];
 
 @NgModule({
