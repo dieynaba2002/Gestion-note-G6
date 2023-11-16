@@ -1,0 +1,25 @@
+:root{
+    --principal:#007BFF;
+    --seconde:#CE6A6B;
+}
+
+.contain-img img{
+   
+    width: 150px;
+    height: 150px; 
+    }
+    .contain-body{
+        line-height: 15px;
+    }
+    #btn-popup:hover{
+        background-color:#007BFF ;
+        color: white;
+
+    }
+    .content-icons{
+        width: 25px;
+        height: 25px;
+        display: flex;
+        place-content: center;
+        align-items: center;
+    }
