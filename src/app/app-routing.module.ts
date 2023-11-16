@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 import { AuthComponent } from './auth/auth.component';
 import {EvaluationComponent} from './evaluation/evaluation.component'
+import { GestionNoteComponent } from './gestion-note/gestion-note.component';
 
 const routes: Routes = [
   {path: 'dashboard', component:DashboardAdminComponent},
   {path: 'auth', component:AuthComponent},
   {path:'evaluation', component:EvaluationComponent},
   {path: '', redirectTo:'auth', pathMatch:'full'},
+  {path: "gestionnotes", component:GestionNoteComponent}
 ];
 
 @NgModule({
