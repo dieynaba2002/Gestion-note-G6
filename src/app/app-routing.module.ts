@@ -13,11 +13,11 @@ import { GestionNoteComponent } from './gestion-note/gestion-note.component';
 const routes: Routes = [
   {path: 'dashboard', component:DashboardAdminComponent},
   {path: 'auth', component:AuthComponent},
-  {path:'evaluation', component:EvaluationComponent},
+  {path:'evaluation/:id', component:EvaluationComponent},
   {path: '', redirectTo:'auth', pathMatch:'full'},
   {path:'listeprofesseur', component:ListeProfesseurComponent},
   {path:'gestionapprenant', component:GestionApprenantComponent},
-  {path:'listenoteapprenant', component:ListeNoteApprenantComponent},
+  {path:'listenoteapprenant/:id', component:ListeNoteApprenantComponent},
   {path:'gestionnote', component:GestionNoteComponent},
 ];
 

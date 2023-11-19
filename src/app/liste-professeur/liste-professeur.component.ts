@@ -25,10 +25,12 @@ export class ListeProfesseurComponent implements OnInit {
 
   idLastProf:number=0;
 
- profRecup:any;
+  profRecup:any;
   tabProfAdmin:any;
- filterValue:any;
- textButton:string='';
+  filterValue:any;
+  textButton: string = '';
+  visibleContenue:boolean = true;
+  
 
 
 
@@ -40,6 +42,7 @@ export class ListeProfesseurComponent implements OnInit {
    if(this.tabProfAdmin.length!=0){
      this.idLastProf=this.tabProfAdmin[this.tabProfAdmin.length-1].idProf
    }
+   
    
    
   }
@@ -62,7 +65,7 @@ export class ListeProfesseurComponent implements OnInit {
    }else{
      
      let Prof={
-       idProf: this.idLastProf +1,
+       idProf: this.tabProfAdmin.length + 1,
        matiere:this.matiere,
        nom:this.nom,
        annee:this.annee,
@@ -71,12 +74,15 @@ export class ListeProfesseurComponent implements OnInit {
        telephone:this.telephone,
        etat:'active',
        password:'passer',
-       role:this.role
+       role: this.role,
+       evaluation:[]
      }
      console.log(this.tabProfAdmin);
      this.tabProfAdmin.push(Prof);
      localStorage.setItem('admin', JSON.stringify(this.profRecup))
      console.log(this.profRecup)
+
+     
 
 
    }
@@ -94,8 +100,8 @@ export class ListeProfesseurComponent implements OnInit {
      text:text,
      icon:icon
    })
- }
-
+  }
+  
 
 toggleEtat(prof: any) {
   prof.etat = (prof.etat === 'active') ? 'inactive' : 'active';

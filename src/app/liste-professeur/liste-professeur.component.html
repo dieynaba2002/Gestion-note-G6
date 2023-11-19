@@ -214,7 +214,7 @@
                                    </tr>
                                </thead>
                                <tbody *ngFor="let epreuve of tabProfAdmin">
-                                   <tr>
+                                   <tr [ngClass]="{ gris:epreuve.etat=='inactive' }">
                                        <td >
                                            <i class="bi bi-eye"></i>
                                            <span class="pl-2">{{epreuve.prenom}}</span>
@@ -229,8 +229,8 @@
                                            {{epreuve.telephone}}
                                        </td>
                                        <td>
-                                           <div class="badge mx-2" id="badgeEtat" >Affecter </div>
-                                            <div  class="badge mx-2" id="badgeAction" (click)="toggleEtat(epreuve)">{{ (epreuve.etat === 'active') ? 'Désactiver' : 'Activer' }}</div>
+                                           <div class="badge mx-2" id="badgeEtat" *ngIf="epreuve.etat== 'active' " >Affecter </div>
+                                            <div  class="badge mx-2" id="badgeAction"  (click)="toggleEtat(epreuve)">{{ (epreuve.etat === 'active') ? 'Désactiver' : 'Activer' }}</div>
                                        </td>
                                    </tr>
                                </tbody>
