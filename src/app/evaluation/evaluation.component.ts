@@ -1,6 +1,8 @@
 import { Component,  OnInit  } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal  from 'sweetalert2'
+
+
 @Component({
   selector: 'app-evaluation',
   templateUrl: './evaluation.component.html',
@@ -24,13 +26,17 @@ export class EvaluationComponent implements OnInit {
   tabAdminEval: any;
 
   tabAdmin: any;
-
+  matiereProfConnect: any;
   profConnect: any;
 
   profConnectEval: any;
 
   filtreAnnee:string='';
   textButton:string='';
+
+
+
+
   ngOnInit() {
     if (!localStorage.getItem('eval')) {
       localStorage.setItem('eval', JSON.stringify(this.evaluations));
@@ -45,18 +51,17 @@ export class EvaluationComponent implements OnInit {
     this.tabAdmin = JSON.parse(localStorage.getItem('admin') || '[]');
     
     this.tabAdminEval = this.tabAdmin[0].profs
-    console.log(this.tabAdminEval);
+    console.log(this.tabAdminEval)
 
     this.profConnect = this.tabAdminEval.find((element: any) => element.idProf == this.idProfConnect);
-
+    this.matiereProfConnect=this.profConnect.matiere
     this.profConnectEval = this.profConnect.evaluation;
-    console.log(this.profConnectEval);
+    console.log(this.matiereProfConnect);
   }
 
-  constructor(private route: ActivatedRoute) {
-    
-  }
 
+
+  constructor(private route: ActivatedRoute, private router: Router) {};
   idProfConnect = this.route.snapshot.params['id'];
 
   
@@ -97,7 +102,7 @@ export class EvaluationComponent implements OnInit {
       }
       console.log(epreuve);
       this.profConnectEval.push(epreuve);
-      localStorage.setItem('eval', JSON.stringify(this.profConnectEval))
+      localStorage.setItem('admin', JSON.stringify(this.tabAdmin))
       console.log(this.profConnectEval)
 
 
@@ -141,6 +146,7 @@ export class EvaluationComponent implements OnInit {
     localStorage.setItem('eval', JSON.stringify(this.profConnectEval))
   }
 
+
   showAlert(title:any, text:any, icon:any){
     Swal.fire({
       title:title,
@@ -183,6 +189,11 @@ onSearch(){
     (elt:any) => (elt?.annee.includes(this.filtreAnnee)));
     console.log(this.listeEvaluations);
 
+}
+
+//Pour la ridirection de ma page liste à detail
+navigateToDetails(id: number): void {
+  this.router.navigate(['/gestionnote', id]);
 }
 
 }

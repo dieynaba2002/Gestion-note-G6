@@ -62,7 +62,7 @@ export class GestionApprenantComponent implements OnInit{
    }else{
      
      let Apprenant={
-       idApprenant: this.idLastApprenant +1,
+      idApprenant: this.apprenantRecupAdmin.length + 1,
        adresse:this.adresse,
        nom:this.nom,
        annee: this.annee,

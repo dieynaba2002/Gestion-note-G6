@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 
@@ -32,7 +33,7 @@ export class ListeProfesseurComponent implements OnInit {
   visibleContenue:boolean = true;
   
 
-
+  constructor(private router: Router) {}
 
  ngOnInit() {
  
@@ -105,7 +106,13 @@ export class ListeProfesseurComponent implements OnInit {
 
 toggleEtat(prof: any) {
   prof.etat = (prof.etat === 'active') ? 'inactive' : 'active';
+  localStorage.setItem('admin', JSON.stringify(this.profRecup));
   // Vous pouvez ajouter ici la logique pour mettre à jour l'état du professeur dans votre base de données ou tout autre traitement nécessaire
+}
+
+//Pour la ridirection de ma page liste à detail
+navigateToDetails(id: number): void {
+  this.router.navigate(['/detail-professeur', id]);
 }
 
 }

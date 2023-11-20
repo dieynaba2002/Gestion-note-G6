@@ -7,8 +7,9 @@ import {ListeProfesseurComponent} from './liste-professeur/liste-professeur.comp
 import {GestionApprenantComponent} from './gestion-apprenant/gestion-apprenant.component';
 import { ListeNoteApprenantComponent } from './liste-note-apprenant/liste-note-apprenant.component';
 import { GestionNoteComponent } from './gestion-note/gestion-note.component';
+import { DetailsProfesseursComponent } from './details-professeurs/details-professeurs.component';
 
-
+import { DetailsApprenantsComponent } from './details-apprenants/details-apprenants.component';
 
 const routes: Routes = [
   {path: 'dashboard', component:DashboardAdminComponent},
@@ -17,7 +18,7 @@ const routes: Routes = [
   {path: '', redirectTo:'auth', pathMatch:'full'},
   {path:'listeprofesseur', component:ListeProfesseurComponent},
   {path:'gestionapprenant', component:GestionApprenantComponent},
-  {path:'listenoteapprenant/:id', component:ListeNoteApprenantComponent},
+  {path:'listenoteapprenant', component:ListeNoteApprenantComponent},
   {path:'gestionnote', component:GestionNoteComponent},
 ];
 

@@ -99,7 +99,7 @@ export class AuthComponent implements OnInit {
 
   // methode pour se connecter
   connexion(){
-    console.log( this.tabAdmin[0].apprenants.find((element:any)=> element.email==this.email ))
+    console.log( this.tabAdmin[0].apprenants)
     // this.userApprenantFound = this.tabAdmin[0].Apprenants.find((element: any) => element.email == this.email)
     // console.log(this.userApprenantFound);
     this.userProfFound = this.tabAdmin[0].profs.find((element:any)=> element.email==this.email )
@@ -110,8 +110,8 @@ export class AuthComponent implements OnInit {
     }else{
         if (this.userProfFound && this.userProfFound.etat=='active' && this.userProfFound.role=='professeur') {
           this.route.navigate(['evaluation', this.userProfFound.idProf]);
-        }else if(this.tabAdmin[0].apprenants.find((element:any)=> element.email==this.email&& this.tabAdmin[0].Apprenants.find((element: any) => element.email == this.email).etat=='active' && this.tabAdmin[0].Apprenants.find((element: any) => element.email == this.email).role=='apprenant')){
-          this.route.navigate(['listenoteapprenant',this.tabAdmin[0].Apprenants.find((element: any) => element.email == this.email).idApprenant]);
+        }else if(this.tabAdmin[0].apprenants.find((element:any)=> element.email==this.email&& this.tabAdmin[0].apprenants.find((element: any) => element.email == this.email).etat=='active' && this.tabAdmin[0].apprenants.find((element: any) => element.email == this.email).role=='apprenant')){
+          this.route.navigate(['listenoteapprenant',this.tabAdmin[0].apprenants.find((element: any) => element.email == this.email).idApprenant]);
           
         }
         

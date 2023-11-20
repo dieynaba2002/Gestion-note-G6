@@ -1,12 +1,13 @@
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-liste-note-apprenant',
   templateUrl: './liste-note-apprenant.component.html',
   styleUrls: ['./liste-note-apprenant.component.css']
 })
-export class ListeNoteApprenantComponent {
+export class ListeNoteApprenantComponent implements OnInit{
 
   // les attributs
   // nomComplet: string = "";
@@ -22,50 +23,23 @@ export class ListeNoteApprenantComponent {
   
   //valeur du filter qui correspond a celui du champs recherche
   filterValue = "";
+ tabAdmin:any;
+ apprenantConnect:any;
+  recupEval:any;
 
-  tabNotes:any[] = [
-    {
-      id:1,
-      nomComplet: "Dieynaba Coly",
-      classe: "6eme",
-      matiere: "Francais",
-      semestre: "semestre 1",
-      note: 18,
-      prof: "Mr Seck",
-      date: "10/10/2010"
-    },
-    {
-      id:2,
-      nomComplet: "Marie Coly",
-      classe: "6eme",
-      matiere: "Espagnol",
-      semestre: "semestre 2",
-      note: 18,
-      prof: "Mr Seck",
-      date: "22/02/2022"
-    },
-    {
-      id:3,
-      nomComplet: "Lobe Dia",
-      classe: "3eme",
-      matiere: "Maths",
-      semestre: "semestre 1",
-      note: 18,
-      prof: "Mr Seck",
-      date: "22/02/2022"
-    },
-  ]
+  constructor(private route: ActivatedRoute){}
+  idApprenatConnect=this.route.snapshot.params['id'];
+  tabApprenant:any[]=[];
 
-  onSearch(){
-    // Recherche se fait selon le nom ou le prenom 
-    this.filteredElement = this.tabNotes.filter((elt: any) => {
-    const nomComplet = elt?.nomComplet?.toLowerCase() || '';
-    const date = elt?.date?.toLowerCase() || '';
-    const anneeScolaire = elt?.anneeScolaire?.toLowerCase() || '';
-      
-    return nomComplet.includes(this.filterValue.toLowerCase()) || date.includes(this.filterValue.toLowerCase() )|| anneeScolaire.includes(this.filterValue.toLowerCase());
-    });  
+
+  ngOnInit(){
+    this.tabAdmin=JSON.parse(localStorage.getItem('admin')||'[]');
+    this.apprenantConnect=this.tabAdmin[0].apprenants.find((element: any)=> element.idApprenant==this.idApprenatConnect);
+    console.log(this.tabApprenant)
+    console.log(this.tabAdmin[0].profs)
+    this.tabApprenant.push(this.apprenantConnect)
   }
+ 
 
 
 }
