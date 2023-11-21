@@ -1,4 +1,4 @@
-<div class="container" *ngIf="showRegisterForm && !isAdminRegistered">
+<div class="container" *ngIf="tabAdmin.length">
     <div class="screen">
         <div class="screen__content">
             <form class="login">
@@ -26,10 +26,10 @@
 </div>
 
 <!-- inscription -->
- <div class="container" *ngIf="!showRegisterForm && isAdminRegistered" > 
+ <div class="container" *ngIf="!tabAdmin.length" > 
     <div class="screen">
         <div class="screen__content">
-            <form class="register" >
+            <form class="register" (ngSubmit)="onAdminRegistration()" >
                 <div class="login__field">
                     <i class="login__icon fas fa-user"></i>
                     <input type="text" class="login__input" placeholder="Nom" name="nom" [(ngModel)]="nom">

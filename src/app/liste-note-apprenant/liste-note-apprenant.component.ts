@@ -15,7 +15,7 @@ export class ListeNoteApprenantComponent implements OnInit{
   matiere: string = "";
   semestre: string = "";
   note: number = 0;
-  prof: string = "";
+ 
   date: string = "";
 
   //les element trouver
@@ -26,18 +26,34 @@ export class ListeNoteApprenantComponent implements OnInit{
   tabAdmin:any;
   apprenantConnect:any;
   recupEval:any;
+  evaluationForClass: any;
+  noteApprenant: any;
 
   constructor(private route: ActivatedRoute){}
   idApprenatConnect=this.route.snapshot.params['id'];
   tabApprenant:any[]=[];
-
-
+  tabEval:any[]=[];
+  
+  
   ngOnInit(){
     this.tabAdmin=JSON.parse(localStorage.getItem('admin')||'[]');
     this.apprenantConnect=this.tabAdmin[0].apprenants.find((element: any)=> element.idApprenant==this.idApprenatConnect);
     console.log(this.tabApprenant)
+    this.noteApprenant=this.tabApprenant
+    
     console.log(this.tabAdmin[0].profs)
+    const prof = this.tabAdmin[0].profs.find((prof: any) => prof.evaluation && prof.evaluation.classe == this.apprenantConnect.classe);
+    
+    const evaluations = this.tabAdmin[0].profs.flatMap((prof: any) => prof.evaluation || []); // Concatène les tableaux d'évaluations
+
+     this.evaluationForClass = evaluations.find((evaluation: any) => evaluation.classe === this.apprenantConnect.classe);
+
+
     this.tabApprenant.push(this.apprenantConnect)
+    this.tabEval.push(this.evaluationForClass)
+    console.warn( this.tabApprenant )
+    console.warn(this.evaluationForClass )
+    
   }
  
 

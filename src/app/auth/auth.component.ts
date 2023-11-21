@@ -127,7 +127,7 @@ export class AuthComponent implements OnInit {
  }
 
 //  methode pour gerer la maniere dont va s'afficher le formulaire d'incription
-onAdminRegistration(): void {
+onAdminRegistration() {
   // Effectuez le processus d'inscription de l'administrateur
 
   // Mettez à jour la variable de statut pour masquer le formulaire d'inscription

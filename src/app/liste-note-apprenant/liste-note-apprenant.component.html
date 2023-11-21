@@ -235,18 +235,17 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr *ngFor="let note of tabApprenant">
+                                                <tr *ngFor="let apprenant of tabApprenant; let i = index">
                                                     <td>
-                                                        
-                                                        <span class="pl-2">{{note.prenom}} {{note.nom}}</span>
+                                                      <span class="pl-2">{{apprenant.prenom}} {{apprenant.nom}}</span>
                                                     </td>
-                                                    <td>{{note.classe}}</td>
-                                                    <td>physique</td>
-                                                    <td>{{note.note}}</td>
-                                                    <td>semestre1</td>
-                                                    <td>{{note.dateNaiss}}</td>
-                                                    <td>{{note.annee}}</td>
-                                                </tr>
+                                                    <td>{{apprenant.classe}}</td>
+                                                    <td>{{tabEval[i]?.matiere}}</td>
+                                                    <td>{{apprenant.note}}</td>
+                                                    <td>{{tabEval[i]?.semestre}}</td>
+                                                    <td>{{apprenant.dateNaiss}}</td>
+                                                    <td>{{apprenant.annee}}</td>
+                                                  </tr>
                                                 
                                             </tbody>
                                         </table>
