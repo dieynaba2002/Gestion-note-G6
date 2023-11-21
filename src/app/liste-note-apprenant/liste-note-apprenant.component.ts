@@ -23,8 +23,8 @@ export class ListeNoteApprenantComponent implements OnInit{
   
   //valeur du filter qui correspond a celui du champs recherche
   filterValue = "";
- tabAdmin:any;
- apprenantConnect:any;
+  tabAdmin:any;
+  apprenantConnect:any;
   recupEval:any;
 
   constructor(private route: ActivatedRoute){}

@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!formChoice">
+<div class="container" *ngIf="showRegisterForm && !isAdminRegistered">
     <div class="screen">
         <div class="screen__content">
             <form class="login">
@@ -26,7 +26,7 @@
 </div>
 
 <!-- inscription -->
- <div class="container" *ngIf="formChoice" > 
+ <div class="container" *ngIf="!showRegisterForm && isAdminRegistered" > 
     <div class="screen">
         <div class="screen__content">
             <form class="register" >

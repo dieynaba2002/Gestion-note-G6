@@ -38,6 +38,8 @@ export class GestionNoteComponent implements OnInit {
 
   evalChoisi:any;
 
+  showListe:boolean=true
+
  constructor(private route: ActivatedRoute) {};
 
  idEvalChoisi = this.route.snapshot.params['id'];
@@ -85,7 +87,9 @@ export class GestionNoteComponent implements OnInit {
 }
 
 
-
+switchListe(){
+    this.showListe=!this.showListe;
+}
 
 
  // vider champs

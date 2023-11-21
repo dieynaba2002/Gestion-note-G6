@@ -199,10 +199,10 @@
         </div>
 
           <!-- Button trigger modal -->
-          <button type="button" class="btn boutonajout text-end " (click)="enregisterNote()">
+          <button type="button" class="btn boutonajout text-end " (click)="enregisterNote(); switchListe()">
            Enregistrer
      </button>
-        <div class="row mt-3">
+        <div class="row mt-3" *ngIf="showListe">
            <div class="col-12 grid-margin">
                <div class="card ">
                    <div class="card-body">
@@ -247,77 +247,54 @@
                </div>
            </div>
        </div>
+        <div class="row mt-3" *ngIf="!showListe">
+           <div class="col-12 grid-margin">
+               <div class="card ">
+                   <div class="card-body">
+                        <div class="d-flex justify-content-center">
+                            <h2 class="card-title text-dark text-center mt-2">Liste des Notes</h2>
+                            <div class="confidentialite-form ml-3 mb-4">g</div>
+                        </div>
+                       <div class="table-responsive" style="color: black;">
+                     
+                           <table class="table" style="color: black;" >
+                               <thead style="color: black;">
+                                   <tr style="background-color: #ce6a6b; ">
+                                       
+                                       <th style="color: white;"> Nom </th>
+                                       <th style="color: white;"> Prenom </th>
+                                       <th style="color: white;"> Classe</th>
+                                       <th style="color: white;"> Année </th>
+                                       <th style="color: white;"> Date </th>
+                                       <th style="color: white;"> Note </th>
+                                   </tr>
+                               </thead>
+                              
+                               <tbody *ngFor="let userNote of  tabAdminApprenant ; let i = index">
+                                   <tr *ngIf="userNote.classe==classe">
+                                        <td> {{userNote.nom}} </td>
+                                        <td> {{userNote.prenom}} </td>
+                                        <td> {{userNote.classe}} </td>
+                                        <td> {{userNote.annee}} </td>
+                                        <td> {{userNote.dateNaiss}} </td>
+                                        <td>  
+                                         {{userNote.note}}
+                                      </td>
+
+                                    
+                                       </tr>
+                               </tbody>
+                           </table>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
 
     </div>
 </div>
  
-  <!-- Modal pour ajouter une note-->
-  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content bg-white">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Ajout d'une note</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form>
-                <div class="formulaire d-block">
-                    <label class="text-dark">Apprenants:</label>
-                    <select class="form-select" name="'mat" aria-label="Default select example" class="w-100 mb-3 h-2" [(ngModel)]="apprenant">
-                        <option value="Marie Laure COLY">Marie Laure COLY</option>
-                        <option value="Dieynaba COLY">Dieynaba COLY</option>
-                        <option value="Lobe Guilel DIA">Lobe Guilel DIA</option>
-                      </select>
-                    <label class="text-dark">Matieres:</label>
-                    <select class="form-select" name="'mat" aria-label="Default select example" class="w-100 mb-3 h-2" [(ngModel)]="matiere">
-                        <option value="Mathematiques">Mathematiques</option>
-                        <option value="Physique">Physique</option>
-                        <option value="Francais">Francais</option>
-                        <option value="Francais">SVT</option>
-                      </select>
-
-                    <label  class="text-dark">Type d'evaluation:</label>
-                    <select class="form-select" name="'type" aria-label="Default select example" class="w-100 mb-3" [(ngModel)]="typeEval">
-                        <option value="Devoir">Devoir</option>
-                        <option value="Examen">Examen</option>
-                      </select>
-                    <label  class="text-dark">Semestre:</label>
-                    <select class="form-select" name='sem' aria-label="Default select example" class="w-100 mb-3" [(ngModel)]="semestre">
-                        <option  value="Semestre 1">Semestre 1</option>
-                        <option value="Semestre 2">Semestre 2</option>
-                      </select>
-
-                    <label class="text-dark">Annee Scolaire:</label>
-                    <select class="form-select" name="annee" aria-label="Default select example" class="w-100 mb-3" [(ngModel)]="scolaire">
-                        <option value="2022/2023">2022/2023</option>
-                        <option value="2023/2024">2023/2024</option>
-                      </select>
-                      <label class="text-dark">Classe:</label>
-                      <select class="form-select" name="classe" aria-label="Default select example" class="w-100 mb-3" [(ngModel)]="classe">
-                          <option value="6e">6e</option>
-                          <option value="5e">5e</option>
-                          <option value="4e">4e</option>
-                          <option value="3e">3e</option>
-                        </select>
-                </div>
-                <div class="">
-                    <label  class="text-dark">Note : </label>
-                    <input type="number" name="note" [(ngModel)]="note">
-                </div>
-                <div class="mb-3">
-                  <label for="dateInput" class="form-label text-dark bg-white">Date:</label>
-                  <input type="date" name="date" class="form-control" id="dateInput" aria-describedby="emailHelp" placeholder="Date de l'evaluation" [(ngModel)]="date">
-                </div>
-               
-              </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="ajouterNotes()">Ajouter</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
   <!-- Modal pour modifier une note-->
   <div class="modal fade " id="modifierModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
