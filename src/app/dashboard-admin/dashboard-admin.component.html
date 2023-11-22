@@ -55,8 +55,8 @@
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">liste des
-                                    profs</a></li>
+                            <li class="nav-item" [routerLink]="['/listeprofesseur']"> liste des
+                                    profs</li>
                         </ul>
                     </div>
                 </li>
@@ -71,18 +71,18 @@
                     </a>
                     <div class="collapse" id="ui-basics">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">liste des
-                                    apprenants</a></li>
+                            <li class="nav-item"  [routerLink]="['/gestionapprenant']"> liste des
+                                    apprenants</li>
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" href="pages/tables/basic-table.html">
+                <li class="nav-item menu-items d-flex mx-3">
+          
                         <span class="menu-icon">
                             <i class="mdi mdi-table-large text-white"></i>
                         </span>
-                        <span class="menu-title">Liste classe</span>
-                    </a>
+                        <span class="menu-title fs-6">Liste classe</span>
+                    
                 </li>
 
             </ul>
@@ -260,102 +260,104 @@
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col-12 grid-margin">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title text-dark">Liste des professeurs</h4>
-                                    <div class="table-responsive" style="color: black;">
-                                        <table class="table" style="color: black;">
-                                            <thead style="color: black;">
-                                                <tr>
-                                                    
-                                                    <th style="color: black;"> Client Name </th>
-                                                    <th style="color: black;"> Order No </th>
-                                                    <th style="color: black;"> Product Cost </th>
-                                                    <th style="color: black;"> Project </th>
-                                                    <th style="color: black;"> Payment Mode </th>
-                                                    <th style="color: black;"> Start Date </th>
-                                                    <th style="color: black;"> Payment Status </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <img src="assets/images/faces/face1.jpg" alt="image" />
-                                                        <span class="pl-2">Henry Klein</span>
-                                                    </td>
-                                                    <td> 02312 </td>
-                                                    <td> $14,500 </td>
-                                                    <td> Dashboard </td>
-                                                    <td> Credit card </td>
-                                                    <td> 04 Dec 2019 </td>
-                                                    <td>
-                                                        <div class="badge badge-outline-success">Approved</div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                   
-                                                    <td>
-                                                        <img src="assets/images/faces/face2.jpg" alt="image" />
-                                                        <span class="pl-2">Estella Bryan</span>
-                                                    </td>
-                                                    <td> 02312 </td>
-                                                    <td> $14,500 </td>
-                                                    <td> Website </td>
-                                                    <td> Cash on delivered </td>
-                                                    <td> 04 Dec 2019 </td>
-                                                    <td>
-                                                        <div class="badge badge-outline-warning">Pending</div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="assets/images/faces/face5.jpg" alt="image" />
-                                                        <span class="pl-2">Lucy Abbott</span>
-                                                    </td>
-                                                    <td> 02312 </td>
-                                                    <td> $14,500 </td>
-                                                    <td> App design </td>
-                                                    <td> Credit card </td>
-                                                    <td> 04 Dec 2019 </td>
-                                                    <td>
-                                                        <div class="badge badge-outline-danger">Rejected</div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="assets/images/faces/face3.jpg" alt="image" />
-                                                        <span class="pl-2">Peter Gill</span>
-                                                    </td>
-                                                    <td> 02312 </td>
-                                                    <td> $14,500 </td>
-                                                    <td> Development </td>
-                                                    <td> Online Payment </td>
-                                                    <td> 04 Dec 2019 </td>
-                                                    <td>
-                                                        <div class="badge badge-outline-success">Approved</div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="assets/images/faces/face4.jpg" alt="image" />
-                                                        <span class="pl-2">Sallie Reyes</span>
-                                                    </td>
-                                                    <td> 02312 </td>
-                                                    <td> $14,500 </td>
-                                                    <td> Website </td>
-                                                    <td> Credit card </td>
-                                                    <td> 04 Dec 2019 </td>
-                                                    <td>
-                                                        <div class="badge badge-outline-success">Approved</div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                           <!-- Button trigger modal -->
+          
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title text-dark">Liste des professeurs</h4>
+                                <div class="table-responsive" style="color: black;">
+                                    <table class="table" style="color: black;">
+                                        <thead style="color: black;">
+                                            <tr>
+                                                
+                                                <th style="color: black;"> Client Name </th>
+                                                <th style="color: black;"> Order No </th>
+                                                <th style="color: black;"> Product Cost </th>
+                                                <th style="color: black;"> Project </th>
+                                                <th style="color: black;"> Payment Mode </th>
+                                                <th style="color: black;"> Start Date </th>
+                                                <th style="color: black;"> Payment Status </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/images/faces/face1.jpg" alt="image" />
+                                                    <span class="pl-2">Henry Klein</span>
+                                                </td>
+                                                <td> 02312 </td>
+                                                <td> $14,500 </td>
+                                                <td> Dashboard </td>
+                                                <td> Credit card </td>
+                                                <td> 04 Dec 2019 </td>
+                                                <td>
+                                                    <div class="badge badge-outline-success">Approved</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                
+                                                <td>
+                                                    <img src="assets/images/faces/face2.jpg" alt="image" />
+                                                    <span class="pl-2">Estella Bryan</span>
+                                                </td>
+                                                <td> 02312 </td>
+                                                <td> $14,500 </td>
+                                                <td> Website </td>
+                                                <td> Cash on delivered </td>
+                                                <td> 04 Dec 2019 </td>
+                                                <td>
+                                                    <div class="badge badge-outline-warning">Pending</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/images/faces/face5.jpg" alt="image" />
+                                                    <span class="pl-2">Lucy Abbott</span>
+                                                </td>
+                                                <td> 02312 </td>
+                                                <td> $14,500 </td>
+                                                <td> App design </td>
+                                                <td> Credit card </td>
+                                                <td> 04 Dec 2019 </td>
+                                                <td>
+                                                    <div class="badge badge-outline-danger">Rejected</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/images/faces/face3.jpg" alt="image" />
+                                                    <span class="pl-2">Peter Gill</span>
+                                                </td>
+                                                <td> 02312 </td>
+                                                <td> $14,500 </td>
+                                                <td> Development </td>
+                                                <td> Online Payment </td>
+                                                <td> 04 Dec 2019 </td>
+                                                <td>
+                                                    <div class="badge badge-outline-success">Approved</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/images/faces/face4.jpg" alt="image" />
+                                                    <span class="pl-2">Sallie Reyes</span>
+                                                </td>
+                                                <td> 02312 </td>
+                                                <td> $14,500 </td>
+                                                <td> Website </td>
+                                                <td> Credit card </td>
+                                                <td> 04 Dec 2019 </td>
+                                                <td>
+                                                    <div class="badge badge-outline-success">Approved</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

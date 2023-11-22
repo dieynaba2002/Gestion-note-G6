@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!formChoice">
+<div class="container" *ngIf="tabAdmin.length">
     <div class="screen">
         <div class="screen__content">
             <form class="login">
@@ -10,7 +10,7 @@
                     <i class="login__icon fas fa-lock"></i>
                     <input type="password" class="login__input" placeholder="Mot de passe" name="password" [(ngModel)]="password">
                 </div>
-                <button class="button login__submit">
+                <button class="button login__submit" (click)="connexion()">
                     <span class="button__text">Se connecter</span>
                     <i class="button__icon fas fa-chevron-right" style="color:#0594D0"></i>
                 </button>
@@ -26,10 +26,10 @@
 </div>
 
 <!-- inscription -->
-<div class="container" *ngIf="formChoice"> 
+ <div class="container" *ngIf="!tabAdmin.length" > 
     <div class="screen">
         <div class="screen__content">
-            <form class="register" >
+            <form class="register" (ngSubmit)="onAdminRegistration()" >
                 <div class="login__field">
                     <i class="login__icon fas fa-user"></i>
                     <input type="text" class="login__input" placeholder="Nom" name="nom" [(ngModel)]="nom">
@@ -59,4 +59,5 @@
             <span class="screen__background__shape screen__background__shape1"></span>
         </div>
     </div>
-</div>
+</div> 
+

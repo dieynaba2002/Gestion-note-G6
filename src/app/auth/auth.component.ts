@@ -9,29 +9,40 @@ import { Admin } from '../model/Admin';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
+
+  showRegisterForm:boolean = true;
+  isAdminRegistered :boolean= false;
   
   // les attributs
+  idlastAdmin:number = 0;
+
+  userProfFound:any;
+  userApprenantFound:any;
+
   nom:string= "";
   prenom:string= "";
   email:string= "";
   password: string = "";
 
   formChoice = true;
-
+  adminConnect:any;
   // Tableau d'objet
   admin: Admin[] = [];
   // tableau qui recupere notre localstorage
-  tabAdmin:any[] = [];
+  tabAdmin:any ;
 
-  ngOnInit(): void {
+  ngOnInit() {
     if (!localStorage.getItem("admin") ) {
       localStorage.setItem("admin",JSON.stringify(this.admin));
     }
-    console.log(this.admin);
+  
+    this.tabAdmin=JSON.parse(localStorage.getItem("admin") || "[]");
+    if(this.tabAdmin.length){
+      this.idlastAdmin=this.tabAdmin[this.tabAdmin.length-1].idAdmin
+    }
+    console.log(this.tabAdmin[0].profs[0].role)
   }
-  constructor(private route: Router) {
-    
-  }
+  constructor(private route: Router) {}
 
   
   showForm() {
@@ -61,12 +72,14 @@ export class AuthComponent implements OnInit {
     }
     else {
       let userAdmin = {
+        idAdmin:this.idlastAdmin+1,
         nom : this.nom,
         prenom: this.prenom,
         email: this.email,
         password: this.password,
         profs:[],
-        apprenants:[]
+        apprenants:[],
+        matiere:[]
       } 
       this.tabAdmin.push(userAdmin);
       console.log(this.tabAdmin);
@@ -85,6 +98,43 @@ export class AuthComponent implements OnInit {
     this.password = "";
   }
 
-  
+  // methode pour se connecter
+  connexion(){
+    console.log( this.tabAdmin[0].apprenants)
+    // this.userApprenantFound = this.tabAdmin[0].Apprenants.find((element: any) => element.email == this.email)
+    // console.log(this.userApprenantFound);
+    this.userProfFound = this.tabAdmin[0].profs.find((element:any)=> element.email==this.email )
+    if(this.email==''|| this.password==''){
+      this.verifChamps('Oups', 'Vous devez renseigner tous les champs', 'error');      
+    }else if(this.email==='admin@admin.com' && this.password=== 'admin'){
+        this.route.navigate(['dashboard' ]); 
+    }else{
+        if (this.userProfFound && this.userProfFound.etat=='active' && this.userProfFound.role=='professeur') {
+          this.route.navigate(['evaluation', this.userProfFound.idProf]);
+        }else if(this.tabAdmin[0].apprenants.find((element:any)=> element.email==this.email&& this.tabAdmin[0].apprenants.find((element: any) => element.email == this.email).etat=='active' && this.tabAdmin[0].apprenants.find((element: any) => element.email == this.email).role=='apprenant')){
+          this.route.navigate(['listenoteapprenant',this.tabAdmin[0].apprenants.find((element: any) => element.email == this.email).idApprenant]);
+          
+        }
+        
+        else{
+          this.verifChamps('Oups', 'Ce compte n\'existe pas', 'error');
+      }
+      
+      
+
+       }
+
+ }
+
+//  methode pour gerer la maniere dont va s'afficher le formulaire d'incription
+onAdminRegistration() {
+  // Effectuez le processus d'inscription de l'administrateur
+
+  // Mettez à jour la variable de statut pour masquer le formulaire d'inscription
+  this.showRegisterForm = false;
+
+  // Mettez à jour la variable de statut pour indiquer que l'administrateur est inscrit
+  this.isAdminRegistered = true;
+}
 
 }
