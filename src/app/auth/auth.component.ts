@@ -9,6 +9,9 @@ import { Admin } from '../model/Admin';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
+
+  showRegisterForm:boolean = true;
+  isAdminRegistered :boolean= false;
   
   // les attributs
   idlastAdmin:number = 0;
@@ -39,9 +42,7 @@ export class AuthComponent implements OnInit {
     }
     console.log(this.tabAdmin[0].profs[0].role)
   }
-  constructor(private route: Router) {
-    
-  }
+  constructor(private route: Router) {}
 
   
   showForm() {
@@ -124,4 +125,16 @@ export class AuthComponent implements OnInit {
        }
 
  }
+
+//  methode pour gerer la maniere dont va s'afficher le formulaire d'incription
+onAdminRegistration() {
+  // Effectuez le processus d'inscription de l'administrateur
+
+  // Mettez à jour la variable de statut pour masquer le formulaire d'inscription
+  this.showRegisterForm = false;
+
+  // Mettez à jour la variable de statut pour indiquer que l'administrateur est inscrit
+  this.isAdminRegistered = true;
+}
+
 }
