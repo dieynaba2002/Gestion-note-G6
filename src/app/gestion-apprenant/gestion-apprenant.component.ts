@@ -32,9 +32,9 @@ export class GestionApprenantComponent implements OnInit{
  ngOnInit() {
   
    this.apprenantsRecup=JSON.parse(localStorage.getItem('admin') || '[]')
-   console.log(this.apprenantsRecup ,' tableau recupere')
+  //  console.log(this.apprenantsRecup ,' tableau recupere')
    this.apprenantRecupAdmin=this.apprenantsRecup[0].apprenants
-   console.log(this.apprenantRecupAdmin ,' tableau apprenant')
+  //  console.log(this.apprenantRecupAdmin ,' tableau apprenant')
 
    if(this.apprenantRecupAdmin.length ){
      this.idLastApprenant=this.apprenantRecupAdmin[this.apprenantRecupAdmin.length-1].idApprenant

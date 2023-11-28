@@ -8,7 +8,7 @@ import {GestionApprenantComponent} from './gestion-apprenant/gestion-apprenant.c
 import { ListeNoteApprenantComponent } from './liste-note-apprenant/liste-note-apprenant.component';
 import { GestionNoteComponent } from './gestion-note/gestion-note.component';
 import { DetailsProfesseursComponent } from './details-professeurs/details-professeurs.component';
-
+import { AjoutClasseComponent } from './ajout-classe/ajout-classe.component';
 import { DetailsApprenantsComponent } from './details-apprenants/details-apprenants.component';
 
 const routes: Routes = [
@@ -21,7 +21,9 @@ const routes: Routes = [
   {path:'listenoteapprenant/:id', component:ListeNoteApprenantComponent},
   {path:'gestionnote/:id', component:GestionNoteComponent},
   {path:'detail-professeur/:id', component:DetailsProfesseursComponent},
-  {path:'detail-apprenant/:id', component:DetailsApprenantsComponent}
+  {path:'detail-apprenant/:id', component:DetailsApprenantsComponent},
+  {path:'ajout-classe', component:AjoutClasseComponent}
+
 ];
 
 @NgModule({

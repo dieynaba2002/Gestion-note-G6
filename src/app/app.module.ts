@@ -13,6 +13,7 @@ import { DetailsApprenantsComponent } from './details-apprenants/details-apprena
 import { ListeProfesseurComponent } from './liste-professeur/liste-professeur.component';
 import { DetailsProfesseursComponent } from './details-professeurs/details-professeurs.component';
 import { ListeNoteApprenantComponent } from './liste-note-apprenant/liste-note-apprenant.component';
+import { AjoutClasseComponent } from './ajout-classe/ajout-classe.component';
 
 
 
@@ -30,6 +31,7 @@ import { ListeNoteApprenantComponent } from './liste-note-apprenant/liste-note-a
     ListeProfesseurComponent,
     DetailsProfesseursComponent,
     ListeNoteApprenantComponent,
+    AjoutClasseComponent,
     
   ],
   imports: [
